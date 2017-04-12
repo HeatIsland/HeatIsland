@@ -11,4 +11,4 @@ This is the app
 
 If you have quesstions please contact Alex at [his github](https://github.com/Alex-Carter01)
 
-![full logo]()
+![full logo](https://drive.google.com/open?id=0B5_BsiVmj3-pVkVZLWJhaUdoZ1k)
