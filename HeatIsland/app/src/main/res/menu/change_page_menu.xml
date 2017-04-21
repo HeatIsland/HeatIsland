@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="100dp">
+    <item
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:title="Home"
+        android:id="@+id/home"/>
+    <item
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:title="Form"
+        android:id="@+id/form"/>
+    <item
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:title="Miscellaneous"
+        android:id="@+id/misc"/>
+</menu>
