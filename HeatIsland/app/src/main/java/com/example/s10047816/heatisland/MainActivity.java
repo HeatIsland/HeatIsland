@@ -37,12 +37,10 @@ public class MainActivity extends AppCompatActivity {
             case(R.id.form):
                 startActivity(new Intent(MainActivity.this,Form.class));
                 return true;
-            case(R.id.misc):
-                startActivity(new Intent(MainActivity.this,Miscellaneous.class));
-                return true;
             default:
                 super.onOptionsItemSelected(item);
 
         }
+        return false;
     }
 }

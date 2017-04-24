@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="all">
+        <item
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:title="grassy"
+            android:id="@+id/grassy"/>
+        <item
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:title="watery"
+            android:id="@+id/watery"/>
+        <item
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:title="firey"
+            android:id="@+id/firey"/>
+        <item
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:title="earthy"
+            android:id="@+id/earthy"/>
+    </group>
+</menu>

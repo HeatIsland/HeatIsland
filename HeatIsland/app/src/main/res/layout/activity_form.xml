@@ -36,18 +36,21 @@
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="#000000" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entry"
+            android:id="@+id/menuButton" />
+
         <EditText
-            android:layout_marginLeft="20dp"
-            android:textAlignment="center"
-            android:text=""
-            android:layout_gravity="center"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textColor="#000000"
+            android:id="@+id/desc"
             android:hint="@string/formhint"
+            android:layout_weight="1" />
 
-                />
     </LinearLayout>
 
     <LinearLayout
@@ -68,14 +71,23 @@
             android:textColor="#000000" />
         <EditText
             android:layout_marginLeft="20dp"
+            android:inputType="numberDecimal"
             android:textAlignment="center"
             android:layout_gravity="center"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:hint="@string/formhint"
 
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:id="@+id/temp" />
     </LinearLayout>
 
-    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/button2"
+        android:layout_gravity="center_horizontal"
+        android:onClick="submit" />
+
+</LinearLayout>
