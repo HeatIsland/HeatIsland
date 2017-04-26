@@ -23,7 +23,7 @@
         android:text="Begin"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal"
-        android:onClick="newActivity" />
+        android:onClick="clicker" />
 
     <TextView
         android:layout_width="wrap_content"

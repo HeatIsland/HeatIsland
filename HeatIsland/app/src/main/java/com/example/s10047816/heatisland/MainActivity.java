@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void clicker(View view){
+        startActivity(new Intent(MainActivity.this,Form.class));
+    }
+
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
             case(R.id.home):
