@@ -1,5 +1,6 @@
 package com.example.s10047816.heatisland;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ScaleDrawable;
 import android.os.Bundle;
@@ -23,8 +24,11 @@ import java.util.HashMap;
  */
 public class Form extends AppCompatActivity{
 
+
     public String descCat = "";
     HashMap<String,Boolean> descValues = new HashMap<>();
+
+
     private void executeReq(URL urlObject) throws IOException {
         HttpURLConnection conn = null;
 
@@ -36,18 +40,18 @@ public class Form extends AppCompatActivity{
         conn.connect();
     }
 
-    @Override
+    /*
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         Log.i("info", "you got here! 3");
         getMenuInflater().inflate(R.menu.description_menu, menu);
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
-    /*public boolean onContextMenuSelected(MenuItem item){
+    public boolean onContextMenuSelected(MenuItem item) {
         //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         Log.i("info", "you got here! 2");
         return true;
-    }*/
+    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.i("info", "you got here!");
@@ -58,7 +62,7 @@ public class Form extends AppCompatActivity{
         }
         return true;
     }
-
+    */
     public void submit(View view){
         final TextView temp = (TextView) findViewById(R.id.temp);
         final TextView desc = (TextView) findViewById(R.id.desc);
@@ -72,6 +76,12 @@ public class Form extends AppCompatActivity{
         catch(Exception e){Log.i("error", "error");}
     }
 
+
+    public void onClickSendToDescriptions(View view){
+        startActivity(new Intent(Form.this,ListViewDescription.class));
+    }
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
@@ -83,8 +93,8 @@ public class Form extends AppCompatActivity{
         TextView title = (TextView) findViewById(R.id.title);
         title.setCompoundDrawables(scaleDrawable.getDrawable(),null,null,null);
         */
-        Button button = (Button) findViewById(R.id.menuButton);
-        registerForContextMenu(button);
+        //Button button = (Button) findViewById(R.id.menuButton);
+        //registerForContextMenu(button);
 
         /*
                 try {

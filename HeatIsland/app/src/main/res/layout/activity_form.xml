@@ -42,7 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Entry"
-            android:id="@+id/menuButton" />
+            android:id="@+id/menuButton"
+            android:onClick="onClickSendToDescriptions"/>
 
         <EditText
             android:layout_width="100dp"
