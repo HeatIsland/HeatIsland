@@ -69,7 +69,7 @@ public class Form extends AppCompatActivity{
             URL url = new URL("http://carter-lasa-guess.appspot.com/" + parameters);
             executeReq(url);
         }
-        catch(Exception e){Log.i("error", "error")}
+        catch(Exception e){Log.i("error", "error");}
     }
 
     protected void onCreate(Bundle savedInstanceState) {
