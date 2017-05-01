@@ -3,6 +3,7 @@ package com.example.s10047816.heatisland;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ScaleDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,68 +13,62 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by s10047816 on 4/19/2017.
- */
-public class Form extends AppCompatActivity{
-
-
-    public String descCat = "";
-    HashMap<String,Boolean> descValues = new HashMap<>();
-
+class SendGetTask extends AsyncTask<String, Void, Void> {
+    private Exception exception;
 
     private void executeReq(URL urlObject) throws IOException {
         HttpURLConnection conn = null;
-
-        conn = (HttpURLConnection) urlObject.openConnection();
-        conn.setReadTimeout(100000); //Milliseconds
-        conn.setConnectTimeout(150000); //Milliseconds
-        conn.setRequestMethod("GET");
-        conn.setDoInput(true);
-        conn.connect();
     }
 
-    /*
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
-        Log.i("info", "you got here! 3");
-        getMenuInflater().inflate(R.menu.description_menu, menu);
-        super.onCreateContextMenu(menu, v, menuInfo);
+    protected Void doInBackground(String... url) {
+        Log.i("testing", "url:"+url[0]);
+        String urls = url[0];
+        try {
+            URL obj = new URL(urls);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+            //this is the http response code of the website - currently not used
+            int responseCode = con.getResponseCode();
+        }catch(Exception e){}
+        return null;
     }
+}
 
-    public boolean onContextMenuSelected(MenuItem item) {
-        //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Log.i("info", "you got here! 2");
-        return true;
-    }
+public class Form extends AppCompatActivity{
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.i("info", "you got here!");
-        if (!item.isChecked()){
-            descValues.put(item.getTitle().toString(), true);
-        } else{
-            descValues.put(item.getTitle().toString(),false);
-        }
-        return true;
-    }
-    */
+
+    HashMap<String,Boolean> descValues = new HashMap<>();
+
+
     public void submit(View view){
+        Log.i("submitting", "sending data to database");
+        //just to clarify, temp is for temperature NOT temporary
         final TextView temp = (TextView) findViewById(R.id.temp);
         final TextView desc = (TextView) findViewById(R.id.desc);
+        String descT = desc.getText().toString();
         try {
+            Log.i("preencoded", ""+descT);
+            descT = URLEncoder.encode(descT, "UTF-8");
+            descT.replace("%20", "+");
+            Log.i("postencoded", ""+descT);
             String parameters = "?location="; //
             parameters += "12.3%2C23.5";
-            parameters += "&description="+desc.getText().toString();
+            parameters += "&description="+descT;
+            parameters += "&temperature="+temp.getText().toString();
             URL url = new URL("http://carter-lasa-guess.appspot.com/" + parameters);
-            executeReq(url);
-        }
-        catch(Exception e){Log.i("error", "error");}
+            String urls = "http://carter-lasa-guess.appspot.com/" + parameters;
+            Log.i("url", "sending: "+url);
+            new SendGetTask().execute(urls);
+        }catch(Exception e){Log.i("error", ""+e);}
     }
 
 
@@ -81,28 +76,21 @@ public class Form extends AppCompatActivity{
         startActivity(new Intent(Form.this,ListViewDescription.class));
     }
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
-        /*
-        Drawable drawable = getResources().getDrawable(R.drawable.logo);
-        drawable.setBounds(0,0,drawable.getIntrinsicWidth(),drawable.getIntrinsicHeight());
-        ScaleDrawable scaleDrawable = new ScaleDrawable(drawable,0,0.2f,0.2f);
-        TextView title = (TextView) findViewById(R.id.title);
-        title.setCompoundDrawables(scaleDrawable.getDrawable(),null,null,null);
-        */
-        //Button button = (Button) findViewById(R.id.menuButton);
-        //registerForContextMenu(button);
+        Bundle extras = getIntent().getExtras();
 
-        /*
-                try {
-            String parameters = ""; //
-            URL url = new URL("http://carter.com" + parameters);
-            executeReq(url);
+        if(extras!=null) {
+            if (extras.containsKey("description")) {
+                final EditText desc = (EditText) findViewById(R.id.desc);
+                String description = "";
+                for (String d : (ArrayList<String>) extras.get("description")) {
+                    description += d + ", ";
+                }
+                desc.setText(description);
+            }
         }
-        catch(Exception e){Log.i("error", "error")}
-         */
     }
 }

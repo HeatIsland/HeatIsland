@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.example.s10047816.heatisland.ListViewDescription">
 
 
@@ -16,4 +17,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/list">
     </ListView>
+
+    <Button
+        android:layout_gravity="center"
+        android:text="Submit"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit"
+        android:onClick="onClickSubmit"/>
+
 </LinearLayout>
