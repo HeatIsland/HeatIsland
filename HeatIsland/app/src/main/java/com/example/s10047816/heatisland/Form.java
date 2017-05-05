@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ScaleDrawable;
 import android.location.Location;
@@ -275,6 +277,14 @@ public class Form extends AppCompatActivity{
                 desc.setText(description);
             }
         }
+
+        EditText desc = (EditText) findViewById(R.id.desc);
+
+        desc.getBackground().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
+
+        EditText temp = (EditText) findViewById(R.id.temp);
+
+        temp.getBackground().setColorFilter(Color.BLACK,PorterDuff.Mode.SRC_IN);
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 

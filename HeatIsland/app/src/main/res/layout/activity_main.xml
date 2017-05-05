@@ -13,6 +13,7 @@
 
 
     <ImageView
+        android:layout_gravity="center"
         android:layout_width="177dp"
         android:layout_height="240dp"
         android:src="@drawable/logo"/>

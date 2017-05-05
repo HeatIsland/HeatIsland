@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 public class ListViewDescription extends AppCompatActivity {
 
-    String[] descriptiveWords = {"dirty", "grassy", "watery", "firey", "gina", "chen"};
+    String[] descriptiveWords = {"dirty", "grassy", "watery", "firey"};
     boolean[] descriptiveBools = new boolean[descriptiveWords.length];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
